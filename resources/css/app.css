@@ -1,0 +1,292 @@
+@import "tailwindcss";
+
+@source "../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php";
+@source "../../storage/framework/views/*.php";
+@source "../**/*.blade.php";
+@source "../**/*.js";
+
+@theme {
+  --font-serif: "Playfair Display", "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Inter", "Work Sans", ui-sans-serif, system-ui, sans-serif;
+}
+
+/* ===== Default accent: Gold ===== */
+:root {
+  --accent: #c9a961;
+  --accent-light: #d4af37;
+  --accent-dark: #b8942e;
+  --bg: #0a0e1a;
+  --bg-alt: #0d1321;
+  --bg-card: rgba(13, 19, 33, 0.85);
+  --text-primary: #e8e6e1;
+  --text-secondary: #9ca3af;
+  --border: rgba(201, 169, 97, 0.25);
+  --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.4);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.5);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.5);
+}
+
+html {
+  font-size: 18px;
+}
+
+/* ===== Accent: Emerald ===== */
+[data-accent="emerald"] {
+  --accent: #34d399;
+  --accent-light: #6ee7b7;
+  --accent-dark: #10b981;
+}
+
+/* ===== Accent: Burgundy ===== */
+[data-accent="burgundy"] {
+  --accent: #be123c;
+  --accent-light: #f43f5e;
+  --accent-dark: #9f1239;
+}
+
+/* ===== Light Mode ===== */
+[data-theme="light"] {
+  --bg: #faf7f0;
+  --bg-alt: #f0ebe0;
+  --bg-card: #ffffff;
+  --text-primary: #0d1321;
+  --text-secondary: #4a5568;
+  --border: rgba(13, 19, 33, 0.15);
+  --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.08);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.12);
+}
+
+[data-theme="light"][data-accent="emerald"] {
+  --accent: #059669;
+  --accent-light: #10b981;
+  --accent-dark: #047857;
+}
+
+[data-theme="light"][data-accent="burgundy"] {
+  --accent: #9f1239;
+  --accent-light: #be123c;
+  --accent-dark: #881337;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent) transparent;
+}
+
+/* ===== Navigation ===== */
+#navbar {
+  background-color: rgba(10, 14, 26, 0.85);
+}
+
+[data-theme="light"] #navbar {
+  background-color: rgba(245, 240, 232, 0.9);
+}
+
+[data-theme="light"] #navbar .nav-link {
+  color: #0d1321 !important;
+}
+
+[data-theme="light"] #mobile-menu {
+  background-color: rgba(245, 240, 232, 0.95);
+}
+
+[data-theme="light"] #mobile-menu a {
+  color: #0d1321 !important;
+}
+
+[data-theme="light"] #accent-toggle,
+[data-theme="light"] #theme-toggle,
+[data-theme="light"] #mobile-menu-btn {
+  color: #0d1321 !important;
+}
+.nav-link {
+  position: relative;
+  transition: color 0.2s ease;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-light));
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+.nav-link.active {
+  color: var(--accent);
+}
+
+/* ===== Hero ===== */
+[data-theme="light"] #home {
+  background-color: #f5f0e8;
+}
+.hero-overlay {
+  background-color: rgba(10, 14, 26, 0.65);
+}
+
+[data-theme="light"] .hero-overlay {
+  background-color: rgba(250, 247, 240, 0.88);
+}
+
+/* ===== Footer pattern ===== */
+.footer-overlay {
+  background-color: rgba(10, 14, 26, 0.92);
+}
+
+[data-theme="light"] .footer-overlay {
+  background-color: rgba(250, 247, 240, 0.95);
+}
+
+/* ===== Cards ===== */
+.card-base {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+[data-theme="light"] .card-base {
+  background-color: #f5f0e8;
+  border-color: rgba(13, 19, 33, 0.12);
+}
+
+.card-hover {
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--accent);
+}
+
+.stat-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+[data-theme="light"] .stat-card {
+  background-color: #f5f0e8;
+  border-color: rgba(13, 19, 33, 0.12);
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--accent);
+}
+
+/* ===== Timeline ===== */
+.timeline-item {
+  position: relative;
+  padding-left: 2rem;
+  padding-bottom: 2rem;
+}
+
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.5rem;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent), var(--accent-light));
+  box-shadow: 0 0 8px var(--accent);
+}
+
+.timeline-item::after {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 1.5rem;
+  width: 2px;
+  height: calc(100% - 0.5rem);
+  background: linear-gradient(to bottom, var(--accent), transparent);
+}
+
+.timeline-item:last-child::after {
+  display: none;
+}
+
+/* ===== Buttons ===== */
+.btn-primary {
+  background: linear-gradient(135deg, var(--accent), var(--accent-light));
+  color: #0a0e1a;
+  font-weight: 600;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 20px color-mix(in srgb, var(--accent) 40%, transparent);
+}
+
+.btn-outline {
+  border: 2px solid var(--accent);
+  color: var(--accent);
+  font-weight: 600;
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-outline:hover {
+  background: linear-gradient(135deg, var(--accent), var(--accent-light));
+  color: #0a0e1a;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 20px color-mix(in srgb, var(--accent) 40%, transparent);
+}
+
+[data-theme="light"] .btn-primary {
+  color: #0a0e1a;
+}
+
+[data-theme="light"] .btn-outline:hover {
+  color: #0a0e1a;
+}
+
+/* ===== Tags ===== */
+.tag {
+  background-color: color-mix(in srgb, var(--accent) 15%, transparent);
+  color: var(--accent);
+}
+
+/* ===== Social icons ===== */
+.social-icon {
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.social-icon:hover {
+  color: var(--accent);
+  transform: translateY(-2px);
+}
+
+/* ===== Section heading underline ===== */
+.section-line {
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+}
+
+/* ===== Gold glow effect ===== */
+.gold-glow {
+  text-shadow: 0 0 20px color-mix(in srgb, var(--accent) 30%, transparent);
+}
