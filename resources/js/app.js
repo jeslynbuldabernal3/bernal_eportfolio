@@ -29,39 +29,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // ---- Accent color switcher ----
-  const accents = ["gold", "emerald", "burgundy"];
-  const accentBtn = document.getElementById("accent-toggle");
-
-  function applyAccent(accent) {
-    if (accent === "gold") {
-      html.removeAttribute("data-accent");
-    } else {
-      html.setAttribute("data-accent", accent);
-    }
-    localStorage.setItem("accent", accent);
-    updateAccentIndicator(accent);
-  }
-
-  function updateAccentIndicator(accent) {
-    const indicator = document.getElementById("accent-indicator");
-    if (!indicator) return;
-    const colors = { gold: "#c9a961", emerald: "#34d399", burgundy: "#be123c" };
-    indicator.style.backgroundColor = colors[accent] || colors.gold;
-  }
-
-  const savedAccent = localStorage.getItem("accent") || "gold";
-  applyAccent(savedAccent);
-
-  if (accentBtn) {
-    accentBtn.addEventListener("click", () => {
-      const current = localStorage.getItem("accent") || "gold";
-      const idx = accents.indexOf(current);
-      const next = accents[(idx + 1) % accents.length];
-      applyAccent(next);
-    });
-  }
-
   // ---- Mobile menu ----
   const menuBtn = document.getElementById("mobile-menu-btn");
   const mobileMenu = document.getElementById("mobile-menu");

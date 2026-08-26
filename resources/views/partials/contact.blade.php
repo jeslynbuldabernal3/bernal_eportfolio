@@ -1,7 +1,7 @@
 <section id="contact" class="py-24" style="background-color: var(--bg);">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-16">
-            <h2 class="font-serif text-3xl sm:text-4xl font-bold mb-4">Contact</h2>
+            <h2 class="font-serif text-5xl sm:text-6xl font-bold mb-4">Contact</h2>
             <div class="w-20 h-0.5 mx-auto section-line"></div>
             <p class="mt-5 text-base max-w-2xl mx-auto" style="color: var(--text-secondary);">
                 Feel free to reach out — I'd love to hear from you.
@@ -22,7 +22,7 @@
                             </div>
                             <div>
                                 <p class="text-sm font-medium" style="color: var(--text-secondary);">Email</p>
-                                <p class="text-sm font-semibold">jeslyn.bernal@email.com</p>
+                                <p class="text-sm font-semibold">jeslynbuldabernal3@email.com</p>
                             </div>
                         </div>
                         <div class="flex items-center gap-3">

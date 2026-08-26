@@ -6,13 +6,13 @@
             </span>
         </div>
 
-        <h1 class="font-serif text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-bold tracking-tight leading-none mb-8 gold-glow whitespace-nowrap">
+        <h1 class="font-serif font-bold tracking-tight leading-none mb-8 gold-glow whitespace-nowrap" style="font-size: 8rem;">
             {{ $name }}
         </h1>
 
         <div class="w-24 h-0.5 mx-auto mb-8 section-line"></div>
 
-        <p class="text-xl sm:text-2xl md:text-3xl font-light max-w-3xl mx-auto mb-14 leading-relaxed" style="color: var(--text-secondary);">
+        <p class="text-xl sm:text-2xl md:text-3xl font-light max-w-3xl mx-auto mb-14 leading-relaxed" style="color: var(--text-secondary); font-family: 'Natural', cursive;">
             {{ $tagline }}
         </p>
 

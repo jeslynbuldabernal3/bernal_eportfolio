@@ -6,28 +6,15 @@
             </a>
 
             <div class="hidden md:flex items-center gap-8">
-                <a href="#home" class="nav-link text-sm font-medium" style="color: var(--text-secondary);">Home</a>
-                <a href="#about" class="nav-link text-sm font-medium" style="color: var(--text-secondary);">About</a>
-                <a href="#education" class="nav-link text-sm font-medium" style="color: var(--text-secondary);">Education</a>
-                <a href="#certifications" class="nav-link text-sm font-medium" style="color: var(--text-secondary);">Certifications</a>
-                <a href="#projects" class="nav-link text-sm font-medium" style="color: var(--text-secondary);">Projects</a>
-                <a href="#contact" class="nav-link text-sm font-medium" style="color: var(--text-secondary);">Contact</a>
+                <a href="#home" class="nav-link text-base font-medium" style="color: var(--text-secondary);">Home</a>
+                <a href="#about" class="nav-link text-base font-medium" style="color: var(--text-secondary);">About</a>
+                <a href="#education" class="nav-link text-base font-medium" style="color: var(--text-secondary);">Education</a>
+                <a href="#certifications" class="nav-link text-base font-medium" style="color: var(--text-secondary);">Certifications</a>
+                <a href="#projects" class="nav-link text-base font-medium" style="color: var(--text-secondary);">Projects</a>
+                <a href="#contact" class="nav-link text-base font-medium" style="color: var(--text-secondary);">Contact</a>
             </div>
 
             <div class="flex items-center gap-3">
-                <button id="accent-toggle" class="relative p-2 rounded-lg transition-colors hover:opacity-80" style="color: var(--text-secondary);" aria-label="Change accent color" title="Cycle accent color">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <circle cx="13.5" cy="6.5" r="2.5"/>
-                        <circle cx="19" cy="13" r="2.5"/>
-                        <circle cx="16" cy="19" r="2.5"/>
-                        <circle cx="8" cy="19" r="2.5"/>
-                        <circle cx="5" cy="13" r="2.5"/>
-                        <circle cx="11" cy="6.5" r="2.5"/>
-                        <path d="M12 2a10 10 0 0 0-7.35 16.76"/>
-                    </svg>
-                    <span id="accent-indicator" class="absolute bottom-0.5 right-0.5 w-2 h-2 rounded-full" style="background-color: #c9a961;"></span>
-                </button>
-
                 <button id="theme-toggle" class="p-2 rounded-lg transition-colors hover:opacity-80" style="color: var(--text-secondary);" aria-label="Toggle dark mode">
                     <svg id="theme-icon-light" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
@@ -58,12 +45,12 @@
 
     <div id="mobile-menu" class="hidden md:hidden border-t" style="border-color: var(--border); background-color: rgba(10, 14, 26, 0.95);">
         <div class="px-4 py-3 space-y-1">
-            <a href="#home" class="block px-3 py-2 rounded-lg text-sm font-medium transition-colors" style="color: var(--text-secondary);">Home</a>
-            <a href="#about" class="block px-3 py-2 rounded-lg text-sm font-medium transition-colors" style="color: var(--text-secondary);">About</a>
-            <a href="#education" class="block px-3 py-2 rounded-lg text-sm font-medium transition-colors" style="color: var(--text-secondary);">Education</a>
-            <a href="#certifications" class="block px-3 py-2 rounded-lg text-sm font-medium transition-colors" style="color: var(--text-secondary);">Certifications</a>
-            <a href="#projects" class="block px-3 py-2 rounded-lg text-sm font-medium transition-colors" style="color: var(--text-secondary);">Projects</a>
-            <a href="#contact" class="block px-3 py-2 rounded-lg text-sm font-medium transition-colors" style="color: var(--text-secondary);">Contact</a>
+            <a href="#home" class="block px-3 py-2 rounded-lg text-base font-medium transition-colors" style="color: var(--text-secondary);">Home</a>
+            <a href="#about" class="block px-3 py-2 rounded-lg text-base font-medium transition-colors" style="color: var(--text-secondary);">About</a>
+            <a href="#education" class="block px-3 py-2 rounded-lg text-base font-medium transition-colors" style="color: var(--text-secondary);">Education</a>
+            <a href="#certifications" class="block px-3 py-2 rounded-lg text-base font-medium transition-colors" style="color: var(--text-secondary);">Certifications</a>
+            <a href="#projects" class="block px-3 py-2 rounded-lg text-base font-medium transition-colors" style="color: var(--text-secondary);">Projects</a>
+            <a href="#contact" class="block px-3 py-2 rounded-lg text-base font-medium transition-colors" style="color: var(--text-secondary);">Contact</a>
         </div>
     </div>
 </nav>

@@ -30,20 +30,6 @@ html {
   font-size: 18px;
 }
 
-/* ===== Accent: Emerald ===== */
-[data-accent="emerald"] {
-  --accent: #34d399;
-  --accent-light: #6ee7b7;
-  --accent-dark: #10b981;
-}
-
-/* ===== Accent: Burgundy ===== */
-[data-accent="burgundy"] {
-  --accent: #be123c;
-  --accent-light: #f43f5e;
-  --accent-dark: #9f1239;
-}
-
 /* ===== Light Mode ===== */
 [data-theme="light"] {
   --bg: #faf7f0;
@@ -55,18 +41,6 @@ html {
   --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.08);
   --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
   --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.12);
-}
-
-[data-theme="light"][data-accent="emerald"] {
-  --accent: #059669;
-  --accent-light: #10b981;
-  --accent-dark: #047857;
-}
-
-[data-theme="light"][data-accent="burgundy"] {
-  --accent: #9f1239;
-  --accent-light: #be123c;
-  --accent-dark: #881337;
 }
 
 html {
@@ -289,4 +263,32 @@ body {
 /* ===== Gold glow effect ===== */
 .gold-glow {
   text-shadow: 0 0 20px color-mix(in srgb, var(--accent) 30%, transparent);
+}
+
+/* ===== Certifications ===== */
+.cert-card {
+  border: 1px solid var(--border);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.cert-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 30px color-mix(in srgb, var(--accent) 25%, transparent),
+              0 0 0 1px var(--accent);
+  border-color: var(--accent);
+}
+
+/* ===== Lightbox ===== */
+#cert-lightbox.active {
+  display: flex !important;
+  animation: lbFadeIn 0.25s ease;
+}
+
+@keyframes lbFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+#cert-lightbox img {
+  max-width: 90vw;
 }

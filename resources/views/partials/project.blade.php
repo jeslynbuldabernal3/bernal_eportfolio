@@ -15,9 +15,9 @@
 <section id="projects" class="py-24" style="background-color: var(--bg-alt);">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-16">
-            <h2 class="font-serif text-5xl sm:text-6xl font-bold mb-4">Projects</h2>
+            <h2 class="font-serif text-3xl sm:text-4xl font-bold mb-4">Projects</h2>
             <div class="w-20 h-0.5 mx-auto section-line"></div>
-            <p class="mt-5 max-w-2xl mx-auto leading-relaxed" style="font-size: 17px; color: var(--text-secondary);">
+            <p class="mt-5 text-base max-w-2xl mx-auto" style="color: var(--text-secondary);">
                 A curated selection of projects I've built or contributed to.
             </p>
         </div>
