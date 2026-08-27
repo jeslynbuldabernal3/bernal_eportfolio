@@ -30,6 +30,18 @@
         transform: scale(1);
     }
 
+    /* Circular zoom icon: fade + scale in on hover */
+    .cert-zoom {
+        transition: opacity 0.3s ease, transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    }
+    .cert-card:hover .cert-zoom {
+        opacity: 1;
+        transform: scale(1);
+        background-color: var(--accent);
+        box-shadow: 0 0 25px color-mix(in srgb, var(--accent) 55%, transparent);
+    }
+
     /* Gold accent border around image */
     #cert-lightbox .lb-image-wrap {
         border: 2px solid var(--accent);
@@ -83,7 +95,7 @@
 <section id="certifications" class="py-24" style="background-color: var(--bg-alt);">
     <div class="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
         <div class="text-center mb-16">
-            <h2 class="font-serif text-5xl sm:text-6xl font-bold mb-4">Certifications</h2>
+            <h2 class="font-serif text-5xl sm:text-6xl font-bold mb-4">Certificates</h2>
             <div class="w-20 h-0.5 mx-auto section-line"></div>
         </div>
 
@@ -98,10 +110,10 @@
                         <img src="{{ $cert['image'] }}"
                              alt="{{ $cert['title'] }}"
                              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-                        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">
-                            <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                <svg class="w-10 h-10" style="color: var(--accent);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/>
+                        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/25 transition-colors duration-300 flex items-center justify-center">
+                            <div class="cert-zoom w-14 h-14 rounded-full flex items-center justify-center opacity-0 scale-75 transition-all duration-300" style="background-color: #c9a875;">
+                                <svg class="w-7 h-7" style="color: #0a0e1a;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/>
                                 </svg>
                             </div>
                         </div>
@@ -110,8 +122,8 @@
                         <div class="flex items-center gap-2 mb-2">
                             <span class="inline-block px-3 py-1 rounded-full text-xs font-semibold" style="background: linear-gradient(135deg, var(--accent), var(--accent-light)); color: #0a0e1a;">{{ $cert['date'] }}</span>
                         </div>
-                        <h3 class="font-serif text-lg font-bold mb-1">{{ $cert['title'] }}</h3>
-                        <p class="text-sm font-semibold" style="color: var(--accent);">{{ $cert['issuer'] }}</p>
+                        <h3 class="font-serif text-lg font-bold mb-1 uppercase">{{ $cert['title'] }}</h3>
+                        <p class="text-sm font-semibold uppercase tracking-wide" style="color: var(--accent);">{{ $cert['issuer'] }}</p>
                     </div>
                 </div>
             @endforeach

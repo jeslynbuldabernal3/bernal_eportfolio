@@ -9,7 +9,7 @@
                 <a href="#home" class="nav-link text-base font-medium" style="color: var(--text-secondary);">Home</a>
                 <a href="#about" class="nav-link text-base font-medium" style="color: var(--text-secondary);">About</a>
                 <a href="#education" class="nav-link text-base font-medium" style="color: var(--text-secondary);">Education</a>
-                <a href="#certifications" class="nav-link text-base font-medium" style="color: var(--text-secondary);">Certifications</a>
+                <a href="#certifications" class="nav-link text-base font-medium" style="color: var(--text-secondary);">Certificates</a>
                 <a href="#projects" class="nav-link text-base font-medium" style="color: var(--text-secondary);">Projects</a>
                 <a href="#contact" class="nav-link text-base font-medium" style="color: var(--text-secondary);">Contact</a>
             </div>
@@ -48,7 +48,7 @@
             <a href="#home" class="block px-3 py-2 rounded-lg text-base font-medium transition-colors" style="color: var(--text-secondary);">Home</a>
             <a href="#about" class="block px-3 py-2 rounded-lg text-base font-medium transition-colors" style="color: var(--text-secondary);">About</a>
             <a href="#education" class="block px-3 py-2 rounded-lg text-base font-medium transition-colors" style="color: var(--text-secondary);">Education</a>
-            <a href="#certifications" class="block px-3 py-2 rounded-lg text-base font-medium transition-colors" style="color: var(--text-secondary);">Certifications</a>
+            <a href="#certifications" class="block px-3 py-2 rounded-lg text-base font-medium transition-colors" style="color: var(--text-secondary);">Certificates</a>
             <a href="#projects" class="block px-3 py-2 rounded-lg text-base font-medium transition-colors" style="color: var(--text-secondary);">Projects</a>
             <a href="#contact" class="block px-3 py-2 rounded-lg text-base font-medium transition-colors" style="color: var(--text-secondary);">Contact</a>
         </div>

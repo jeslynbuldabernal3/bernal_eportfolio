@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ContactMessage;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+
 class HomeController extends Controller
 {
     public function index()
@@ -35,60 +39,108 @@ class HomeController extends Controller
         // To add a new project, copy one block below and fill in:
         //   title        – project name
         //   description  – short summary (1-2 sentences)
-        //   image        – thumbnail path inside public/images/projects/
+        //   image        – thumbnail path inside public/images/projects/ (card image)
         //   tags         – array of tech tags
         //   live_url     – external URL (Live Demo) — set to null to hide the button
-        //   document_path– local PDF/doc inside public/documents/ — set to null to hide the button
+        //   photos       – one image string OR an array of image strings inside
+        //                  public/images/projects/photos/ — powers "View Photo(s)"
+        //                  lightbox; null/empty to hide the button
         // ──────────────────────────────────────────────────────────
 
         $projects = [
             [
                 'title'         => 'System Analysis and Design',
                 'description'   => 'A web-based ordering and management system for Happy Stem\'s floral shop, featuring customer browsing, cart, checkout and an admin dashboard for product and order management.',
-                'image'         => null,
+                'image'         => asset('images/projects/SAD1.jpg'),
                 'tags'          => ['php', 'MySQL'],
                 'live_url'      => null,
-                'document_path' => '/documents/happystem_chap4.docx',
+                'hide_details'  => true,
+                'photos'        => [
+                    asset('images/projects/SAD1.jpg'),
+                    asset('images/projects/SAD2.jpg'),
+                    asset('images/projects/SAD3.jpg'),
+                    asset('images/projects/SAD4.jpg'),
+                    asset('images/projects/SAD5.jpg'),
+                    asset('images/projects/SAD6.jpg'),
+                    asset('images/projects/SAD7.jpg'),
+                    asset('images/projects/SAD9.jpg'),
+                    asset('images/projects/SAD10.jpg'),
+                    asset('images/projects/SAD11.jpg'),
+                    asset('images/projects/SAD13.png'),
+                    asset('images/projects/SAD14.png'),
+                    asset('images/projects/SAD15.png'),
+                    asset('images/projects/SAD16.jpg'),
+                    asset('images/projects/SAD17.png'),
+                    asset('images/projects/SAD18.jpg'),
+                    asset('images/projects/SAD19.jpg'),
+                    asset('images/projects/SAD20.jpg'),
+                    asset('images/projects/SAD21.jpg'),
+                    asset('images/projects/SAD22.jpg'),
+                    asset('images/projects/SAD23.jpg'),
+                    asset('images/projects/SAD24.jpg'),
+                    asset('images/projects/SAD25.jpg'),
+                    asset('images/projects/SAD26.jpg'),
+                    asset('images/projects/SAD27.jpg'),
+                    asset('images/projects/SAD28.jpg'),
+                    asset('images/projects/SAD29.jpg'),
+                    asset('images/projects/SAD30.jpg'),
+                    asset('images/projects/SAD31.jpg'),
+                    asset('images/projects/SAD32.png'),
+                    asset('images/projects/SAD33.jpg'),
+                    asset('images/projects/SAD34.jpg'),
+                    asset('images/projects/SAD35.jpg'),
+                    asset('images/projects/SAD36.jpg'),
+                    asset('images/projects/SAD37.jpg'),
+                    asset('images/projects/SAD38.jpg'),
+                    asset('images/projects/SAD39.jpg'),
+                    asset('images/projects/SAD40.jpg'),
+                    asset('images/projects/SAD41.jpg'),
+                    asset('images/projects/SAD42.jpg'),
+                ],
             ],
             [
-                'title'         => 'Task Management App',
-                'description'   => 'A collaborative project management tool with real-time updates, drag-and-drop boards, and team workspaces.',
-                'image'         => '/images/projects/task-manager.jpg',
-                'tags'          => ['Vue.js', 'Laravel', 'WebSocket', 'Redis'],
+                'title'         => 'Permanent Record',
+                'description'   => 'A Windows desktop form titled "PERMANENT RECORD" for managing student records.',
+                'image'         => asset('images/projects/photo_2026-08-28_01-22-50.jpg'),
+                'tags'          => ['VB.NET'],
                 'live_url'      => null,                            // REPLACE with your live demo URL, or null to hide
-                'document_path' => null,                            // REPLACE with e.g. '/documents/task-manager-docs.pdf', or null to hide
+                'photos'        => null,
+                'hide_details'  => true,
             ],
             [
-                'title'         => 'Weather Dashboard',
-                'description'   => 'A responsive weather application featuring 7-day forecasts, interactive maps, and location-based alerts.',
-                'image'         => '/images/projects/weather.jpg',
-                'tags'          => ['React', 'OpenWeather API', 'Chart.js', 'Tailwind CSS'],
+                'title'         => 'Trirec Area Finder',
+                'description'   => 'A two grouped panels, Rectangle/Triangle selection checkboxes and Reset/Start buttons for calculating shape areas..',
+                'image'         => asset('images/projects/photo_2026-08-28_01-22-29.jpg'),
+                'tags'          => ['Visual Basic'],
                 'live_url'      => null,
-                'document_path' => null,
+                'photos'        => null,
+                'hide_details'  => true,
             ],
             [
-                'title'         => 'Portfolio CMS',
-                'description'   => 'A lightweight content management system for developers to showcase their work with a clean, minimal interface.',
-                'image'         => '/images/projects/portfolio-cms.jpg',
-                'tags'          => ['Laravel', 'Blade', 'SQLite', 'Vite'],
+                'title'         => 'Boarding House Management System',
+                'description'   => 'A project documentation report for the BlueHaven Boarding House Management System, a VB.NET desktop app with login, dashboard, and Tenant/Room/Billing/Rental Agreement modules, submitted as an academic capstone project for 2nd Sem S.Y. 2025–2026.',
+                'image'         => asset('images/projects/BHMS.png'),
+                'tags'          => ['Visual Basic'],
                 'live_url'      => null,
-                'document_path' => null,
-            ],
-            [
-                'title'         => 'Chat Application',
-                'description'   => 'Real-time messaging platform with private and group chats, file sharing, and emoji support.',
-                'image'         => '/images/projects/chat-app.jpg',
-                'tags'          => ['Node.js', 'Socket.io', 'Express', 'MongoDB'],
-                'live_url'      => null,
-                'document_path' => null,
-            ],
-            [
-                'title'         => 'Blog Platform',
-                'description'   => 'A developer-focused blogging platform with markdown support, syntax highlighting, and RSS feed generation.',
-                'image'         => '/images/projects/blog.jpg',
-                'tags'          => ['Laravel', 'Markdown', 'MySQL', 'Alpine.js'],
-                'live_url'      => null,
-                'document_path' => null,
+                'hide_details'  => true,
+                'photos'        => [
+                    asset('images/projects/BHMS.png'),
+                    asset('images/projects/BHMS1.png'),
+                    asset('images/projects/BHMS2.png'),
+                    asset('images/projects/BHMS3.png'),
+                    asset('images/projects/BHMS4.png'),
+                    asset('images/projects/BHMS5.png'),
+                    asset('images/projects/BHMS6.png'),
+                    asset('images/projects/BHMS7.png'),
+                    asset('images/projects/BHMS8.png'),
+                    asset('images/projects/BHMS9.png'),
+                    asset('images/projects/BHMS10.png'),
+                    asset('images/projects/BHMS11.png'),
+                    asset('images/projects/BHMS12.png'),
+                    asset('images/projects/BHMS13.png'),
+                    asset('images/projects/BHMS14.png'),
+                    asset('images/projects/BHMS16.png'),
+                ],
             ],
         ];
 
@@ -126,5 +178,23 @@ class HomeController extends Controller
         ];
 
         return view('home', compact('name', 'tagline', 'stats', 'education', 'certifications', 'projects', 'socialLinks'));
+    }
+
+    public function sendContactMessage(Request $request)
+    {
+        $validated = $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'email', 'max:255'],
+            'message' => ['required', 'string', 'max:5000'],
+        ]);
+
+        Mail::to(config('mail.from.address'))
+            ->send(new ContactMessage(
+                $validated['name'],
+                $validated['email'],
+                $validated['message'],
+            ));
+
+        return back()->with('success', 'Thank you! Your message has been sent.');
     }
 }

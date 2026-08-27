@@ -37,7 +37,7 @@
         </div>
 
         <div class="mt-8 pt-6 border-t text-center" style="border-color: var(--border);">
-            <p class="text-xs" style="color: var(--text-secondary);">
+            <p style="font-size: 18px; color: var(--text-secondary);">
                 &copy; {{ date('Y') }} {{ $name ?? 'Jeslyn B. Bernal' }}. All rights reserved.
             </p>
         </div>

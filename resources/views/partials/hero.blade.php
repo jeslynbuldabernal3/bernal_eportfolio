@@ -17,14 +17,14 @@
         </p>
 
         <div class="flex flex-col sm:flex-row items-center justify-center gap-5">
-            <a href="#projects" class="btn-primary inline-flex items-center gap-2.5 px-10 py-4 rounded-xl text-base font-semibold">
+            <a href="#projects" class="btn-primary inline-flex items-center justify-center gap-2.5 px-10 py-4 rounded-xl text-base font-semibold" style="min-width: 220px;">
                 View My Work
                 <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                     <line x1="5" y1="12" x2="19" y2="12"/>
                     <polyline points="12 5 19 12 12 19"/>
                 </svg>
             </a>
-            <a href="#contact" class="btn-outline inline-flex items-center gap-2.5 px-10 py-4 rounded-xl text-base font-semibold">
+            <a href="#contact" class="btn-outline inline-flex items-center justify-center gap-2.5 px-10 py-4 rounded-xl text-base font-semibold" style="min-width: 220px;">
                 Get In Touch
             </a>
         </div>
