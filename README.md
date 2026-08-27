@@ -1,59 +1,117 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Jeslyn B. Bernal — Personal Portfolio
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A personal portfolio website built with **Laravel 12** and **Blade**. It presents the owner's profile, story, educational background, certificates, projects, and contact details in a single-page, dark-themed layout.
 
-## About Laravel
+## Description
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+This project is a student portfolio for **Jeslyn B. Bernal**, a fourth-year Bachelor of Science in Information Technology (BSIT) student. It showcases the owner's personal information, profile photo, short bio, educational background, professional certificates, an academic/technical project gallery, and contact information.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+All portfolio content (name, tagline, education, projects, certificates, and social links) is defined directly in `app/Http/Controllers/HomeController.php` and rendered through Blade templates — no custom database is required to display content.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Main Sections / Features
 
-## Learning Laravel
+The home page is a single-page layout assembled from Blade partials:
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+- **Hero** — owner's name, tagline, and call-to-action buttons ("View My Work", "Get In Touch").
+- **About Me** — profile photo and a short bio.
+- **Education** — educational background (BSIT / General Academic Strand).
+- **Certificates** — a grid of certificate cards. Each card opens a **lightbox modal** with prev/next navigation, title/issuer caption, and keyboard support (Esc, arrow keys).
+- **Projects** — a responsive grid of project cards. Each card displays a thumbnail, title, description, and tech tags. Clicking a project photo opens a **photo gallery modal** showing all of that project's designated screenshots (with prev/next navigation). Projects may be flagged to hide details.
+- **Contact** — "Get in Touch" card showing email and location.
+- **Footer** — copyright notice and social icon links (GitHub, Facebook, Instagram).
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Supported interactions:
 
-## Laravel Sponsors
+- Certificate **lightbox** with navigation and counters.
+- Project **photo gallery modal** (per-project galleries with prev/next).
+- Responsive navigation bar that anchors to each section.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## Technologies Used
 
-### Premium Partners
+- **Laravel 12** (PHP `^8.2`) — backend and Blade templating
+- **Blade** — templating engine for the views
+- **Tailwind CSS 4** (via Vite) — styling
+- **Vite** — front-end asset bundling
+- **Inline SVG icons** and custom CSS with CSS variables (dark navy + gold theme)
+- **Google Fonts** (Playfair Display, Inter)
+- **Laravel Mail** — contact form email sending (via SMTP)
+- **SQLite** — default Laravel database (no custom app tables used)
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+## Project Structure
 
-## Contributing
+```
+app/
+  Http/Controllers/
+    HomeController.php    # all portfolio data + contact form handling
+    DocumentController.php# serves files from public/documents
+  Mail/ContactMessage.php # mailable used by the contact form
+resources/views/
+  layouts/app.blade.php   # base layout (fonts + assets)
+  partials/               # hero, about, education, certifications,
+                          # projects, contact, navbar, footer
+  emails/contact-message.blade.php  # email template
+routes/web.php            # home, contact, and document routes
+public/
+  images/                 # profile, hero pattern, certificates, projects
+  documents/              # downloadable files (via DocumentController)
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### Key routes (`routes/web.php`)
 
-## Code of Conduct
+| Method | URI        | Description                              |
+| ------ | ---------- | ---------------------------------------- |
+| GET    | `/`        | Renders the portfolio home page           |
+| POST   | `/contact` | Validates and sends the contact form mail |
+| GET    | `/documents/{filename}` | Serves a file from `public/documents` |
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### How content is added
 
-## Security Vulnerabilities
+Portfolio content lives in `HomeController@index`. To add a project, copy an array block and fill in `title`, `description`, `image`, `tags`, `live_url`, and optional `photos` (an array of image paths used by the photo gallery modal). Certificates and social links are edited the same way, also in the controller.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## Running Locally
+
+Requirements: PHP `^8.2`, Composer, Node.js (for front-end assets), and the Laravel CLI.
+
+1. Install PHP dependencies:
+   ```bash
+   composer install
+   ```
+2. Create and configure the environment file:
+   ```bash
+   cp .env.example .env
+   php artisan key:generate
+   ```
+3. Build front-end assets:
+   ```bash
+   npm install
+   npm run build
+   ```
+4. Start the development server:
+   ```bash
+   php artisan serve
+   ```
+5. Visit `http://localhost:8000` in your browser.
+
+### Running under XAMPP (Apache)
+
+This project is currently served under an XAMPP subdirectory at:
+
+```
+http://localhost/bernal_Eportfolio/public
+```
+
+Because the app runs from a subdirectory, `APP_URL` in `.env` must include the full base path so Laravel generates correct URLs:
+
+```
+APP_URL=http://localhost/bernal_Eportfolio/public
+```
+
+If the project is renamed or moved, update `APP_URL` in `.env` accordingly.
+
+## Contact Form (Email)
+
+The contact form posts to the `/contact` route, validates the inputs, and sends an email using Laravel's mail system (`app/Mail/ContactMessage.php`). Mail settings (SMTP host, username, app password, from address) are configured in `.env` under the `MAIL_*` variables. The `.env` file is gitignored to keep credentials out of the repository.
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+This is a personal/student portfolio project. The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
