@@ -103,7 +103,7 @@
             @foreach($certifications as $index => $cert)
                 <div class="cert-card group rounded-2xl overflow-hidden card-base cursor-pointer"
                      data-lightbox="{{ $index }}"
-                     data-src="{{ $cert['image'] }}"
+                     data-images='@json($cert['images'] ?? [$cert['image']])'
                      data-title="{{ $cert['title'] }}"
                      data-issuer="{{ $cert['issuer'] }}">
                     <div class="aspect-[4/3] overflow-hidden relative" style="background-color: var(--bg-alt);">
@@ -181,27 +181,38 @@
     if (!overlay) return;
 
     const items = Array.from(document.querySelectorAll("[data-lightbox]")).map(function (el) {
+        var images = [];
+        try { images = JSON.parse(el.getAttribute("data-images")); } catch (e) { images = [el.getAttribute("data-src")]; }
+        if (!images || !images.length) images = [el.getAttribute("data-src")];
         return {
-            src:    el.getAttribute("data-src"),
+            images: images,
             title:  el.getAttribute("data-title"),
             issuer: el.getAttribute("data-issuer")
         };
     });
 
     var current = 0;
+    var currentImg = 0;
 
-    function show(i) {
-        current = i;
+    function show(certIndex, imgIndex) {
+        current = certIndex;
+        if (imgIndex === undefined) imgIndex = 0;
+        currentImg = imgIndex;
         var cert = items[current];
-        img.src          = cert.src;
+        if (currentImg < 0) currentImg = cert.images.length - 1;
+        if (currentImg >= cert.images.length) currentImg = 0;
+        img.src          = cert.images[currentImg];
         img.alt          = cert.title;
         title.textContent  = cert.title;
         issuer.textContent = cert.issuer;
-        counter.textContent = (current + 1) + " / " + items.length;
+        var total = cert.images.length;
+        counter.textContent = total > 1 ? (currentImg + 1) + " / " + total : "";
+        btnPrev.style.visibility = total > 1 ? "visible" : "hidden";
+        btnNext.style.visibility = total > 1 ? "visible" : "hidden";
     }
 
     function open(i) {
-        show(i);
+        show(i, 0);
         overlay.classList.add("active");
         document.body.style.overflow = "hidden";
     }
@@ -211,8 +222,18 @@
         document.body.style.overflow = "";
     }
 
-    function prev() { show((current - 1 + items.length) % items.length); }
-    function next() { show((current + 1) % items.length); }
+    function prev() {
+        var cert = items[current];
+        if (cert.images.length > 1) {
+            show(current, currentImg - 1);
+        }
+    }
+    function next() {
+        var cert = items[current];
+        if (cert.images.length > 1) {
+            show(current, currentImg + 1);
+        }
+    }
 
     /* Thumbnail clicks */
     document.querySelectorAll("[data-lightbox]").forEach(function (card) {
@@ -225,6 +246,9 @@
     btnClose.addEventListener("click", close);
     btnPrev.addEventListener("click", function (e) { e.stopPropagation(); prev(); });
     btnNext.addEventListener("click", function (e) { e.stopPropagation(); next(); });
+
+    /* Clicking the photo advances to the next picture */
+    img.addEventListener("click", function (e) { e.stopPropagation(); next(); });
 
     /* Click outside image = close */
     overlay.addEventListener("click", function (e) {

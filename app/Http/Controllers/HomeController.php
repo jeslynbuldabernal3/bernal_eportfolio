@@ -99,6 +99,15 @@ class HomeController extends Controller
                 'hide_details'  => true,
             ],
             [
+                'title'         => '88MINIMART',
+                'description'   => 'A web-based point-of-sale system for a small convenience store.Staff can ring up sales quickly by tapping products, scanning barcodes, or searching by name..',
+                'image'         => asset('images/projects/88minimart.png'),
+                'tags'          => ['Laravel'],
+                'live_url'      => null,
+                'photos'        => null,
+                'hide_details'  => true,
+            ],
+            [
                 'title'         => 'Boarding House Management System',
                 'description'   => 'A project documentation report for the BlueHaven Boarding House Management System, a VB.NET desktop app with login, dashboard, and Tenant/Room/Billing/Rental Agreement modules, submitted as an academic capstone project for 2nd Sem S.Y. 2025–2026.',
                 'image'         => asset('images/projects/BHMS.png'),
@@ -143,10 +152,26 @@ class HomeController extends Controller
                 'image' => asset('images/certifications/IMG_20260119_135601.jpg'),
             ],
             [
-                'title' => 'ONLINE THROUGH SAFETY NETIQUETTE',
+                'title' => 'ONLINE SAFETY THROUGH NETIQUETTE',
                 'issuer' => 'DICT',
                 'date' => 'JULY 23 2026',
                 'image' => asset('images/certifications/Screenshot_2026-08-03-12-06-42-645_cn.wps.moffice_eng.jpg'),
+            ],
+            [
+                'title' => 'UNDERSTANDING STARTUPS AND GETTING YOU IDEA READY FOR THE PHILIPPINE STARTUP CHALLENGE ',
+                'issuer' => 'DICT',
+                'date' => 'SEPTEMBER 7 2026',
+                'image' => asset('images/certifications/photo_2026-11-04_21-16-07.jpg'),
+            ],
+            [
+                'title' => 'INTRODUCTION TO MODERN AI COURSE',
+                'issuer' => 'DICT',
+                'date' => 'OCTOBER 16 2026',
+                'image' => asset('images/certifications/certbadge.png'),
+                'images' => [
+                    asset('images/certifications/certbadge.png'),
+                    asset('images/certifications/badge.png'),
+                ],
             ],
         ];
 
